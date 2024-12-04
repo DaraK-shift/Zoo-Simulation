@@ -1,0 +1,108 @@
+
+public class Main {
+    public static void main(String[] args) {
+        Habitat hab1 = new Habitat("savannah", 12, 12);
+        Habitat hab2 = new Habitat("forest", 13, 13);
+        Habitat hab3 = new Habitat("tundra", 100, 4);
+        Habitat hab4 = new Habitat("jungle", 50, 10);
+
+        Staff st1 = new Staff("John", "Zookeeper", hab1);
+        Staff st2 = new Staff("Jane", "Specialist", hab2);
+        Staff st3 = new Staff("Jack", "Zookeeper", hab3);
+        Staff st4 = new Staff("Jacob", "Specialist", hab4);
+
+        Zoo zoo = new Zoo();
+        zoo.addAnimal1();
+        zoo.addAnimal2();
+        zoo.addAnimal3();
+        zoo.addAnimal4();
+
+        st1.assignStaff(hab1);
+        System.out.println(st1.getName() + " is assigned to " + hab1.getType());
+        st2.assignStaff(hab2);
+        System.out.println(st2.getName() + " is assigned to " + hab2.getType());
+        st3.assignStaff(hab3);
+        System.out.println(st3.getName() + " is assigned to " + hab3.getType());
+        st4.assignStaff(hab4);
+        System.out.println(st4.getName() + " is assigned to " + hab4.getType());
+
+    }
+}
+
+
+class Animal {
+    String name;
+    String species;
+    int age;
+    Habitat habitat;
+
+
+    public Animal(String name, String species, int age, Habitat habitat) {
+        this.name = name;
+        this.species = species;
+        this.age = age;
+        this.habitat = habitat;
+    }
+
+}
+
+class Habitat {
+    String type;
+    int size;
+    int temperature;
+
+
+    public Habitat (String type, int size, int temperature){
+        this.type = type;
+        this.size = size;
+        this.temperature = temperature;
+    }
+String getType(){
+        return type;
+}
+
+}
+
+class Zoo {
+    private Animal a1; // reference to the object
+    private Animal a2;
+    private Animal a3;
+    private Animal a4;
+
+
+    void addAnimal1() {
+        a1 = new Animal("Brad", "horse", 101, new Habitat("Savannah", 15, 200)); // create the object and assign it to the reference,
+    }
+    void addAnimal2() {
+        a2 = new Animal("Angelina", "pig", 1, new Habitat("jungle", 5, 2));
+    }
+    void addAnimal3(){
+        a3 = new Animal("Amber", "leopard", 11, new Habitat("jungle", 6, 1000));
+    }
+    void addAnimal4(){
+        a4= new Animal("Cash", "parrot", 5, new Habitat("iceberg", 1, -1111));
+    }
+
+    public void eat(String food, Staff staff, Animal animal){
+        System.out.println(animal.name + " is fed " + food + " by " + staff.getName());
+    }
+}   class Staff{
+    String name;
+    String role;
+    Habitat habitat;
+
+
+    public Staff(String name, String role, Habitat assignedHabitat){
+        this.name = name;
+        this.role = role;
+    }
+
+    void assignStaff(Habitat assignedHabitat){
+        this.habitat = assignedHabitat;
+
+    }
+    String getName(){
+        return name;
+    }
+}
+
